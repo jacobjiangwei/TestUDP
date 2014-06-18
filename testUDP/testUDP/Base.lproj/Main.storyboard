@@ -44,6 +44,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Uxm-Cb-IrQ">
+                        <barButtonItem key="leftBarButtonItem" title="Start" id="pjt-cR-DYP">
+                            <connections>
+                                <action selector="startServer:" destination="2bY-Vq-DpS" id="UhI-Kq-PN8"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Send One" id="4HV-nq-yYd">
                             <connections>
                                 <action selector="sendOneMessage:" destination="2bY-Vq-DpS" id="PMp-0y-o8F"/>

@@ -482,6 +482,7 @@
 				8344579019512B8C00495E73 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8344579119512B8C00495E73 /* Build configuration list for PBXNativeTarget "testUDPTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +491,7 @@
 				8344579319512B8C00495E73 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

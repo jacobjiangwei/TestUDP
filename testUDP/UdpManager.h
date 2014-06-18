@@ -17,6 +17,8 @@
 }
 +(UdpManager *)manager;
 
+- (NSString *)localIPAddress;
+
 -(void)startServer;
 
 -(void)sendGroupMessage:(NSString *)text;
