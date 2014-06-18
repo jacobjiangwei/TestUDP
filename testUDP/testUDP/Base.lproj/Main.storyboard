@@ -44,9 +44,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Uxm-Cb-IrQ">
-                        <barButtonItem key="leftBarButtonItem" title="Start" id="pjt-cR-DYP">
+                        <barButtonItem key="leftBarButtonItem" title="Send Group" id="pjt-cR-DYP">
                             <connections>
-                                <action selector="startServer:" destination="2bY-Vq-DpS" id="UhI-Kq-PN8"/>
+                                <action selector="sendGroup:" destination="2bY-Vq-DpS" id="QOV-jh-7uu"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Send One" id="4HV-nq-yYd">

@@ -39,6 +39,11 @@ static UdpManager * _sharedInstance=nil;
     return self;
 }
 
+-(void)joinMulticast
+{
+    [udpSocket joinMulticastGroup:@"225.228.0.1" error:nil];
+}
+
 -(void)startServer
 {
     NSError *error = nil;
@@ -59,7 +64,8 @@ static UdpManager * _sharedInstance=nil;
 
 -(void)sendGroupMessage:(NSString *)text
 {
-    
+    NSData *textData=[text dataUsingEncoding:NSUTF8StringEncoding];
+    [udpSocket sendData:textData toHost:@"225.228.0.1" port:33333 withTimeout:-1 tag:0];
 }
 
 -(void)sendMessage:(NSString *)text toHost:(NSString *)host port:(NSInteger)port

@@ -14,6 +14,7 @@
 }
 
 - (IBAction)sendOneMessage:(id)sender;
-- (IBAction)startServer:(id)sender;
+
+- (IBAction)sendGroup:(id)sender;
 
 @end

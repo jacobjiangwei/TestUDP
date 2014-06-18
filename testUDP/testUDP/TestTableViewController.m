@@ -27,6 +27,8 @@
 {
     [super viewDidLoad];
     chatMessage=[[NSMutableArray alloc]init];
+    [[UdpManager manager] startServer];
+    [[UdpManager manager] joinMulticast];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -117,7 +119,8 @@
     [[UdpManager manager] sendMessage:@"one" toHost:@"192.168.1.38" port:33333];
 }
 
-- (IBAction)startServer:(id)sender {
-    [[UdpManager manager] startServer];
+- (IBAction)sendGroup:(id)sender {
+    [[UdpManager manager] sendGroupMessage:@"two"];
 }
+
 @end
