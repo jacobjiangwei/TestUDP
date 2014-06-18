@@ -20,8 +20,9 @@
 - (NSString *)localIPAddress;
 
 -(void)startServer;
+-(void)stopServer;
 -(void)joinMulticast;
--(void)sendGroupMessage:(NSString *)text;
--(void)sendMessage:(NSString *)text toHost:(NSString *)host port:(NSInteger)port;
+-(void)sendGroupMessage:(NSData *)data;
+-(void)sendMessage:(NSData *)data toHost:(NSString *)host port:(NSInteger)port;
 
 @end

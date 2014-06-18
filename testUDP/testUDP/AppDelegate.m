@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "UdpManager.h"
 
 @implementation AppDelegate
 
@@ -22,11 +23,37 @@
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 }
 
+
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+    BOOL backgroundAccepted = [[UIApplication sharedApplication] setKeepAliveTimeout:600 handler:^{ [self backgroundHandler]; }];
+    if (backgroundAccepted)
+    {
+        NSLog(@"backgrounding accepted");
+    }
+    NSLog(@"Background Remain TIme:%f",application.backgroundTimeRemaining);
+    [self backgroundHandler];
+    
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
+
+- (void)backgroundHandler {
+    NSLog(@"### -->backgroundinghandler");
+    UIApplication*    app = [UIApplication sharedApplication];
+    bgTask = [app beginBackgroundTaskWithExpirationHandler:^{
+        [app endBackgroundTask:bgTask];
+        bgTask = UIBackgroundTaskInvalid;
+    }];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        self.isBackground=YES;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [[UdpManager manager] startServer];
+            [[UdpManager manager] joinMulticast];
+        });
+    });
+}
+
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {

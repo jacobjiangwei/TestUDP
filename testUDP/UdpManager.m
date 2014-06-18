@@ -32,11 +32,21 @@ static UdpManager * _sharedInstance=nil;
     self = [super init];
     if(self)
     {
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(applicationDidEnterBackground)
+                                                     name:UIApplicationDidEnterBackgroundNotification
+                                                   object:nil];
+        
         udpQuene=dispatch_queue_create("udpQueue", NULL);
         udpSocket = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:udpQuene];
         udpSocket.delegate=self;
     }
     return self;
+}
+
+- (void)applicationDidEnterBackground
+{
+    [udpSocket close];
 }
 
 -(void)joinMulticast
@@ -62,16 +72,19 @@ static UdpManager * _sharedInstance=nil;
     NSLog(@"Udp server started on IP: %@ port %hu",[self localIPAddress] ,[udpSocket localPort]);
 }
 
--(void)sendGroupMessage:(NSString *)text
+-(void)stopServer
 {
-    NSData *textData=[text dataUsingEncoding:NSUTF8StringEncoding];
-    [udpSocket sendData:textData toHost:@"225.228.0.1" port:33333 withTimeout:-1 tag:0];
+    [udpSocket close];
 }
 
--(void)sendMessage:(NSString *)text toHost:(NSString *)host port:(NSInteger)port
+-(void)sendGroupMessage:(NSData *)data
 {
-    NSData *textData=[text dataUsingEncoding:NSUTF8StringEncoding];
-    [udpSocket sendData:textData toHost:host port:port withTimeout:-1 tag:0];
+    [udpSocket sendData:data toHost:@"225.228.0.1" port:33333 withTimeout:-1 tag:0];
+}
+
+-(void)sendMessage:(NSData *)data toHost:(NSString *)host port:(NSInteger)port
+{
+    [udpSocket sendData:data toHost:host port:port withTimeout:-1 tag:0];
 }
 
 - (void)udpSocket:(GCDAsyncUdpSocket *)sock didConnectToAddress:(NSData *)address

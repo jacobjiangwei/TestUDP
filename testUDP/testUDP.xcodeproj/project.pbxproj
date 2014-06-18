@@ -24,6 +24,7 @@
 		8344579C19512DD200495E73 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 8344579919512DD200495E73 /* GCDAsyncSocket.m */; };
 		8344579D19512DD200495E73 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 8344579B19512DD200495E73 /* GCDAsyncUdpSocket.m */; };
 		834457A019512DD700495E73 /* UdpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8344579F19512DD700495E73 /* UdpManager.m */; };
+		834457A619516B9500495E73 /* ChatMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 834457A519516B9500495E73 /* ChatMessage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,8 @@
 		8344579B19512DD200495E73 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
 		8344579E19512DD700495E73 /* UdpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UdpManager.h; sourceTree = "<group>"; };
 		8344579F19512DD700495E73 /* UdpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UdpManager.m; sourceTree = "<group>"; };
+		834457A419516B9500495E73 /* ChatMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessage.h; sourceTree = "<group>"; };
+		834457A519516B9500495E73 /* ChatMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +174,8 @@
 				8344579B19512DD200495E73 /* GCDAsyncUdpSocket.m */,
 				8344579E19512DD700495E73 /* UdpManager.h */,
 				8344579F19512DD700495E73 /* UdpManager.m */,
+				834457A419516B9500495E73 /* ChatMessage.h */,
+				834457A519516B9500495E73 /* ChatMessage.m */,
 			);
 			name = UDP;
 			sourceTree = "<group>";
@@ -276,6 +281,7 @@
 				8344579D19512DD200495E73 /* GCDAsyncUdpSocket.m in Sources */,
 				8344579619512BC500495E73 /* TestTableViewController.m in Sources */,
 				834457A019512DD700495E73 /* UdpManager.m in Sources */,
+				834457A619516B9500495E73 /* ChatMessage.m in Sources */,
 				8344577019512B8C00495E73 /* AppDelegate.m in Sources */,
 				8344576C19512B8C00495E73 /* main.m in Sources */,
 			);
