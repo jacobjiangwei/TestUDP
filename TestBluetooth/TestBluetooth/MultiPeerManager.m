@@ -291,6 +291,10 @@ static MultiPeerManager * _sharedInstance=nil;
     NSString *tips=[NSString stringWithFormat:@"发现iOS7节点:%@", peerID.displayName];
     NSLog(@"%@",tips);
     
+    if ([peerID.displayName isEqualToString:[UIDevice currentDevice].name]) {
+        NSLog(@"名字一样，不试图连接");
+        return;
+    }
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_RADER_TOOTH object:nil];
 /*
 //    for (MCPeerID *peer in self.connectingPeers) {
@@ -342,8 +346,6 @@ static MultiPeerManager * _sharedInstance=nil;
 - (void)session:(MCSession *)session peer:(MCPeerID *)peerID didChangeState:(MCSessionState)state
 {
     NSLog(@"didChangeState");
-
-    
     if (state==MCSessionStateConnected) {
 //        [_connectingPeers removeObject:peerID];
         NSString *tips=[NSString stringWithFormat:@"连接成功,目前iOS7成功连接的节点数:%d", _nearbySession.connectedPeers.count];
