@@ -104,7 +104,7 @@ static MultiPeerManager * _sharedInstance=nil;
     if (_myPeerID) {
         _myPeerID=nil;
     }
-    _myPeerID=[[MCPeerID alloc]initWithDisplayName:@"fd"];
+    _myPeerID=[[MCPeerID alloc]initWithDisplayName:[UIDevice currentDevice].name];
 
     @try {
         if (_nearbySession) {
@@ -292,7 +292,7 @@ static MultiPeerManager * _sharedInstance=nil;
     NSLog(@"%@",tips);
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_RADER_TOOTH object:nil];
-
+/*
 //    for (MCPeerID *peer in self.connectingPeers) {
 //        if ([peer.displayName isEqualToString:peerID.displayName]) {
 //            NSLog(@"正在连接中,发现了同样的节点:%@",peerID.displayName);
@@ -308,6 +308,8 @@ static MultiPeerManager * _sharedInstance=nil;
     }
     else
         NSLog(@"Not inviting");
+ */
+    [browser invitePeer:peerID toSession:_nearbySession withContext:nil timeout:5.0];
 }
 
 - (void)browser:(MCNearbyServiceBrowser *)browser lostPeer:(MCPeerID *)peerID
