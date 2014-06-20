@@ -356,9 +356,6 @@ static MultiPeerManager * _sharedInstance=nil;
 //        [_connectingPeers removeObject:peerID];
         NSString *tips=[NSString stringWithFormat:@"失去连接,目前iOS7成功连接的节点数:%d",_nearbySession.connectedPeers.count];
         NSLog(@"%@",tips);
-        if (_nearbySession.connectedPeers.count==0) {
-            [self refreshNetwork];
-        }
     }
 }
 
